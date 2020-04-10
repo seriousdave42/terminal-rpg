@@ -24,80 +24,78 @@ namespace TerminalRPG
             List<Character> testList = new List<Character>() {ed, spike, jet, zombie1, zombie2, spider1};
             Character[] turnList = new Character [6] {ed, spike, jet, zombie1, zombie2, spider1};
 
-            // Ninja ninjaClone = (Ninja) turnList[1];
-            // zombie1.Attack(ninjaClone);
-            
-            // ninjaClone = (Ninja) turnList[2];
-            // zombie1.Attack(ninjaClone);
-
             int round = 0;
             while (SumHealthParty(party) > 0 && SumHealthEnemies(enemies) > 0)
             {
-                EncounterStatus(turnList);
-                Console.WriteLine("");
                 int turn = round % 6;
                 if (turnList[turn].Health > 0)
                 {
-                    if (turnList[turn] == spike)
+                    Console.WriteLine("");
+                    EncounterStatus(turnList);
+                    if (turnList[turn] is Ninja)
                     {
-                        Console.WriteLine($"{spike.Name}'s turn. (A)ttack or (S)teal?");
+                        Ninja ninjaClone = (Ninja) turnList[turn];
+                        Console.WriteLine($"{ninjaClone.Name}'s turn. (A)ttack or (S)teal?");
                         string Action = Console.ReadLine();
                         Console.WriteLine("Target name?");
                         string Target = Console.ReadLine();
                         if (Action == "A")
                         {
-                            spike.Attack(enemies.Find(x => x.Name == Target));
+                            ninjaClone.Attack(enemies.Find(x => x.Name == Target));
                         }
                         else if (Action == "S")
                         {
-                            spike.Steal(enemies.Find(x => x.Name == Target));
+                            ninjaClone.Steal(enemies.Find(x => x.Name == Target));
                         }
                         if (SumHealthEnemies(enemies) <= 0)
                         {
                             Console.WriteLine("All enemies vanquished! Congratulations!");
                         }
                     }
-                    else if (turnList[turn] == jet)
+                    else if (turnList[turn] is Samurai)
                     {
-                        Console.WriteLine($"{jet.Name}'s turn. (A)ttack or (M)editate?");
+                        Samurai samuraiClone = (Samurai) turnList[turn];
+                        Console.WriteLine($"{samuraiClone.Name}'s turn. (A)ttack or (M)editate?");
                         string Action = Console.ReadLine();
                         if (Action == "A")
                         {
                             Console.WriteLine("Target name?");
                             string Target = Console.ReadLine();
-                            jet.Attack(enemies.Find(x => x.Name == Target));
+                            samuraiClone.Attack(enemies.Find(x => x.Name == Target));
                         }
                         else if (Action == "M")
                         {
-                            jet.Meditate();
+                            samuraiClone.Meditate();
                         }
                         if (SumHealthEnemies(enemies) <= 0)
                         {
                             Console.WriteLine("All enemies vanquished! Congratulations!");
                         }
                     }
-                    else if (turnList[turn] == ed)
+                    else if (turnList[turn] is Wizard)
                     {
-                        Console.WriteLine($"{ed.Name}'s turn. (A)ttack or (H)eal?");
+                        Wizard wizardClone = (Wizard) turnList[turn];
+                        Console.WriteLine($"{wizardClone.Name}'s turn. (A)ttack or (H)eal?");
                         string Action = Console.ReadLine();
                         Console.WriteLine("Target name?");
                         string Target = Console.ReadLine();
                         if (Action == "A")
                         {
-                            ed.Attack(enemies.Find(x => x.Name == Target));
+                            wizardClone.Attack(enemies.Find(x => x.Name == Target));
                         }
                         else if (Action == "H")
                         {
-                            ed.Heal(party.Find(x => x.Name == Target));
+                            wizardClone.Heal(party.Find(x => x.Name == Target));
                         }
                         if (SumHealthEnemies(enemies) <= 0)
                         {
                             Console.WriteLine("All enemies vanquished! Congratulations!");
                         }
                     }
-                    else if (turnList[turn] == zombie1)
+                    else if (turnList[turn] is Zombie)
                     {
-                        Console.WriteLine($"{zombie1.Name}'s turn.");
+                        Zombie zombieClone = (Zombie) turnList[turn];
+                        Console.WriteLine($"{zombieClone.Name}'s turn.");
                         Random rand = new Random();
                         bool attacked = false;
                         while (!attacked)
@@ -105,7 +103,7 @@ namespace TerminalRPG
                             int target = rand.Next(3);
                             if (party[target].Health > 0)
                             {
-                                zombie1.Attack(party[target]);
+                                zombieClone.Attack(party[target]);
                                 attacked = true;
                             }
                         }
@@ -116,9 +114,10 @@ namespace TerminalRPG
                             Console.WriteLine("Your party was killed in self-defense! Congratulations!");
                         }
                     }
-                    else if (turnList[turn] == zombie2)
+                    else if (turnList[turn] is Spider)
                     {
-                        Console.WriteLine($"{zombie2.Name}'s turn.");
+                        Spider spiderClone = (Spider) turnList[turn];
+                        Console.WriteLine($"{spiderClone.Name}'s turn.");
                         Random rand = new Random();
                         bool attacked = false;
                         while (!attacked)
@@ -126,28 +125,7 @@ namespace TerminalRPG
                             int target = rand.Next(3);
                             if (party[target].Health > 0)
                             {
-                                zombie2.Attack(party[target]);
-                                attacked = true;
-                            }
-                        }
-                        Console.WriteLine("Please press \"Enter\" to continue");
-                        string Action = Console.ReadLine();
-                        if (SumHealthParty(party) <= 0)
-                        {
-                            Console.WriteLine("Your party was killed in self-defense! Congratulations!");
-                        }
-                    }
-                    else if (turnList[turn] == spider1)
-                    {
-                        Console.WriteLine($"{spider1.Name}'s turn.");
-                        Random rand = new Random();
-                        bool attacked = false;
-                        while (!attacked)
-                        {
-                            int target = rand.Next(3);
-                            if (party[target].Health > 0)
-                            {
-                                spider1.Attack(party[target]);
+                                spiderClone.Attack(party[target]);
                                 attacked = true;
                             }
                         }
@@ -185,10 +163,26 @@ namespace TerminalRPG
 
         static void EncounterStatus(Character[] turnList)
         {
+            Console.WriteLine("Party");
+            Console.WriteLine("========");
             foreach (Character character in turnList)
             {
+                if (character is Human)
+                {
                 Console.WriteLine($"{character.Name}: {character.Health} HP");
+                }
             }
+            Console.WriteLine("");
+            Console.WriteLine("Enemies");
+            Console.WriteLine("========");
+            foreach (Character character in turnList)
+            {
+                if (character is Enemy)
+                {
+                Console.WriteLine($"{character.Name}: {character.Health} HP");
+                }
+            }
+            Console.WriteLine("");
         }
     }
 }
