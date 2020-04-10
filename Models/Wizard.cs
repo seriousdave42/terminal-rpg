@@ -24,8 +24,15 @@ namespace TerminalRPG.Models
 
         public void Heal(Human target)
         {
-            target.Health += Intelligence*10;
-            Console.WriteLine($"{Name} viciously heals {target.Name} for {Intelligence*10} HP!");
+            if (target.Health > 0)
+            {
+                target.Health += Intelligence*10;
+                Console.WriteLine($"{Name} viciously heals {target.Name} for {Intelligence*10} HP!");
+            }
+            else
+            {
+                Console.WriteLine($"{target.Name} is too dead to be healed");
+            }
         }
     }
 }

@@ -113,15 +113,15 @@ namespace TerminalRPG
                         Ninja ninjaClone = (Ninja) turnList[turn];
                         Console.WriteLine($"{ninjaClone.Name}'s turn. (A)ttack or (S)teal?");
                         string Action = Console.ReadLine();
-                        Console.WriteLine("Target name?");
+                        Console.WriteLine($"Target? (1){enemies[0].Name} (2){enemies[1].Name} (3){enemies[2].Name}");
                         string Target = Console.ReadLine();
                         if (Action == "A")
                         {
-                            ninjaClone.Attack(enemies.Find(x => x.Name == Target));
+                            ninjaClone.Attack(enemies[int.Parse(Target)-1]);
                         }
                         else if (Action == "S")
                         {
-                            ninjaClone.Steal(enemies.Find(x => x.Name == Target));
+                            ninjaClone.Steal(enemies[int.Parse(Target)-1]);
                         }
                         if (SumHealthEnemies(enemies) <= 0)
                         {
@@ -135,9 +135,9 @@ namespace TerminalRPG
                         string Action = Console.ReadLine();
                         if (Action == "A")
                         {
-                            Console.WriteLine("Target name?");
+                            Console.WriteLine($"Target? (1){enemies[0].Name} (2){enemies[1].Name} (3){enemies[2].Name}");
                             string Target = Console.ReadLine();
-                            samuraiClone.Attack(enemies.Find(x => x.Name == Target));
+                            samuraiClone.Attack(enemies[int.Parse(Target)-1]);
                         }
                         else if (Action == "M")
                         {
@@ -153,15 +153,17 @@ namespace TerminalRPG
                         Wizard wizardClone = (Wizard) turnList[turn];
                         Console.WriteLine($"{wizardClone.Name}'s turn. (A)ttack or (H)eal?");
                         string Action = Console.ReadLine();
-                        Console.WriteLine("Target name?");
-                        string Target = Console.ReadLine();
                         if (Action == "A")
                         {
-                            wizardClone.Attack(enemies.Find(x => x.Name == Target));
+                            Console.WriteLine($"Target? (1){enemies[0].Name} (2){enemies[1].Name} (3){enemies[2].Name}");
+                            string Target = Console.ReadLine();
+                            wizardClone.Attack(enemies[int.Parse(Target)-1]);
                         }
                         else if (Action == "H")
                         {
-                            wizardClone.Heal(party.Find(x => x.Name == Target));
+                            Console.WriteLine($"Target? (1){party[0].Name} (2){party[1].Name} (3){party[2].Name}");
+                            string Target = Console.ReadLine();
+                            wizardClone.Heal(party[int.Parse(Target)-1]);
                         }
                         if (SumHealthEnemies(enemies) <= 0)
                         {
