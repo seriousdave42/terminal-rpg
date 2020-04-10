@@ -1,0 +1,11 @@
+C:\Users\CUBFA\Documents\CodingDojo\CSharp\Fundamentals\TerminalRPG\bin\Debug\netcoreapp2.2\TerminalRPG.deps.json
+C:\Users\CUBFA\Documents\CodingDojo\CSharp\Fundamentals\TerminalRPG\bin\Debug\netcoreapp2.2\TerminalRPG.runtimeconfig.json
+C:\Users\CUBFA\Documents\CodingDojo\CSharp\Fundamentals\TerminalRPG\bin\Debug\netcoreapp2.2\TerminalRPG.runtimeconfig.dev.json
+C:\Users\CUBFA\Documents\CodingDojo\CSharp\Fundamentals\TerminalRPG\bin\Debug\netcoreapp2.2\TerminalRPG.dll
+C:\Users\CUBFA\Documents\CodingDojo\CSharp\Fundamentals\TerminalRPG\bin\Debug\netcoreapp2.2\TerminalRPG.pdb
+C:\Users\CUBFA\Documents\CodingDojo\CSharp\Fundamentals\TerminalRPG\obj\Debug\netcoreapp2.2\TerminalRPG.csprojAssemblyReference.cache
+C:\Users\CUBFA\Documents\CodingDojo\CSharp\Fundamentals\TerminalRPG\obj\Debug\netcoreapp2.2\TerminalRPG.csproj.CoreCompileInputs.cache
+C:\Users\CUBFA\Documents\CodingDojo\CSharp\Fundamentals\TerminalRPG\obj\Debug\netcoreapp2.2\TerminalRPG.AssemblyInfoInputs.cache
+C:\Users\CUBFA\Documents\CodingDojo\CSharp\Fundamentals\TerminalRPG\obj\Debug\netcoreapp2.2\TerminalRPG.AssemblyInfo.cs
+C:\Users\CUBFA\Documents\CodingDojo\CSharp\Fundamentals\TerminalRPG\obj\Debug\netcoreapp2.2\TerminalRPG.dll
+C:\Users\CUBFA\Documents\CodingDojo\CSharp\Fundamentals\TerminalRPG\obj\Debug\netcoreapp2.2\TerminalRPG.pdb
