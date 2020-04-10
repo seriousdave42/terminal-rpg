@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Reflection;
 using TerminalRPG.Models;
 
 namespace TerminalRPG
@@ -11,18 +10,95 @@ namespace TerminalRPG
         {
             Console.WriteLine("Welcome to Terminal RPG! Prepare for disappointment! And adventure!");
             Console.WriteLine("===================================================================");
-            Wizard ed = new Wizard ("Edward");
-            Ninja spike = new Ninja("Spike");
-            // Ninja faye = new Ninja("Faye");
-            Samurai jet = new Samurai("Jet");
-            Zombie zombie1 = new Zombie("Zombie 1");
-            Zombie zombie2 = new Zombie("Zombie 2");
-            Spider spider1 = new Spider("Spider 1");
+            Console.WriteLine("");
+            // Wizard ed = new Wizard ("Edward");
+            // Ninja spike = new Ninja("Spike");
+            // Samurai jet = new Samurai("Jet");
+            List<Human> party = new List<Human>();
+            List<Enemy> enemies = new List<Enemy>();
+            List<Character> turnList = new List<Character>();
 
-            List<Human> party = new List<Human>() {ed, spike, jet};
-            List<Enemy> enemies = new List<Enemy>() {zombie1, zombie2, spider1};
-            List<Character> testList = new List<Character>() {ed, spike, jet, zombie1, zombie2, spider1};
-            Character[] turnList = new Character [6] {ed, spike, jet, zombie1, zombie2, spider1};
+            Console.WriteLine("Select your first party member's class: (N)inja (S)amurai (W)izard");
+            string player1 = Console.ReadLine();
+            Console.WriteLine("Enter your new hero's name:");
+            string player1Name = Console.ReadLine();
+
+            if (player1 == "N")
+            {
+                Ninja hero1 = new Ninja(player1Name);
+                party.Add(hero1);
+                turnList.Add(hero1);
+            }
+            else if (player1 == "S")
+            {
+                Samurai hero1 = new Samurai(player1Name);
+                party.Add(hero1);
+                turnList.Add(hero1);
+            }
+            else
+            {
+                Wizard hero1 = new Wizard(player1Name);
+                party.Add(hero1);
+                turnList.Add(hero1);
+            }
+
+            Console.WriteLine("Select your second party member's class: (N)inja (S)amurai (W)izard");
+            string player2 = Console.ReadLine();
+            Console.WriteLine("Enter your new hero's name:");
+            string player2Name = Console.ReadLine();
+
+            if (player2 == "N")
+            {
+                Ninja hero2 = new Ninja(player2Name);
+                party.Add(hero2);
+                turnList.Add(hero2);
+            }
+            else if (player2 == "S")
+            {
+                Samurai hero2 = new Samurai(player2Name);
+                party.Add(hero2);
+                turnList.Add(hero2);
+            }
+            else
+            {
+                Wizard hero2 = new Wizard(player2Name);
+                party.Add(hero2);
+                turnList.Add(hero2);
+            }
+
+            Console.WriteLine("Select your third party member's class: (N)inja (S)amurai (W)izard");
+            string player3 = Console.ReadLine();
+            Console.WriteLine("Enter your new hero's name:");
+            string player3Name = Console.ReadLine();
+
+            if (player3 == "N")
+            {
+                Ninja hero3 = new Ninja(player3Name);
+                party.Add(hero3);
+                turnList.Add(hero3);
+            }
+            else if (player3 == "S")
+            {
+                Samurai hero3 = new Samurai(player3Name);
+                party.Add(hero3);
+                turnList.Add(hero3);
+            }
+            else
+            {
+                Wizard hero3 = new Wizard(player3Name);
+                party.Add(hero3);
+                turnList.Add(hero3);
+            }
+
+            Zombie zombie1 = new Zombie("Zombie 1");
+            enemies.Add(zombie1);
+            turnList.Add(zombie1);
+            Zombie zombie2 = new Zombie("Zombie 2");
+            enemies.Add(zombie2);
+            turnList.Add(zombie2);
+            Spider spider1 = new Spider("Spider 1");
+            enemies.Add(spider1);
+            turnList.Add(spider1);
 
             int round = 0;
             while (SumHealthParty(party) > 0 && SumHealthEnemies(enemies) > 0)
@@ -161,7 +237,7 @@ namespace TerminalRPG
             return totalHealth; 
         }
 
-        static void EncounterStatus(Character[] turnList)
+        static void EncounterStatus(List<Character> turnList)
         {
             Console.WriteLine("Party");
             Console.WriteLine("========");
